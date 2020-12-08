@@ -1,0 +1,29 @@
+syntax = "proto3";
+package streaming;
+option go_package="streamingpb";
+
+message StreamingRequest {
+}
+
+message StreamingResponse {
+    int64 value = 1;
+}
+
+service Streaming{
+    rpc Stream1(StreamingRequest) returns (stream StreamingResponse) {};
+    rpc TicketStream2(TicketRequest) returns (stream TicketResponse) {};
+}
+
+
+message TicketResponse {
+  string from = 1;
+  string to = 2;
+  long date = 3;
+  
+}
+
+message TicketRequest {
+   string from = 1;
+   string to = 2;
+   long date = 3;
+}
